@@ -1,0 +1,29 @@
+{
+	"name": "vench/yii2-parse-contacts",
+	"description": "Yii2 parse contacts",
+	"keywords": [
+		"yii2",
+		"extension",
+		"parse",
+		"contacts"
+	],
+	"homepage": "https://github.com/vench/yii2-parse-contacts",
+	"type": "yii2-extension",
+	"license": "Apache Licens 2.0",
+	"authors": [
+		{
+		"name": "Vench master",
+		"homepage": "http://www.spb.vench-master.ru/"
+		}
+	],
+	"require": { 
+	}	,
+	"autoload": {
+		"psr-4": {
+			"Vench\ParseContacts": ""
+		}
+	},
+	"extra": {
+ 
+	}
+}

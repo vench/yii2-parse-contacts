@@ -3,6 +3,7 @@
 namespace Vench\ParseContacts;
 
 use yii\base\BootstrapInterface;
+use yii\console\controllers\MigrateController;
 
 
 /**
@@ -13,24 +14,33 @@ use yii\base\BootstrapInterface;
  */
 class Module extends \yii\base\Module implements BootstrapInterface
 {
-  
-  
-     /**
+
+
+    /**
      * Bootstrap method to be called during application bootstrap stage.
      * @param Application $app the application currently running
      */
-    public function bootstrap($app) {
-    
-        var_dump(__METHOD__);
+    public function bootstrap( $app)
+    {
+
+         
+
+        \Yii::$container->set(
+            'yii\console\controllers\MigrateController',
+            [
+                'migrationPath' => ['@app/migrations', '@vendor/vench/yii2-parse-contacts/migrations']
+            ]
+        );
     }
-  
+
     /**
      * @inheritdoc
      */
     public function init()
     {
-        parent::init(); 
+        parent::init();
 
-	var_dump(__METHOD__);
+        var_dump(__METHOD__);
     }
+}
 

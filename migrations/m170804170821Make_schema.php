@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 
-class make_schema extends Migration
+class m170804170821Make_schema extends Migration
 {
     public function safeUp()
     {
@@ -15,3 +15,4 @@ class make_schema extends Migration
     } 
 
 }
+

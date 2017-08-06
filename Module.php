@@ -6,6 +6,7 @@ use yii\base\BootstrapInterface;
 use yii\console\controllers\MigrateController;
 
 
+
 /**
  * Base module class for Krajee extensions
  *
@@ -23,10 +24,9 @@ class Module extends \yii\base\Module implements BootstrapInterface
     public function bootstrap( $app)
     {
 
-         
 
         \Yii::$container->set(
-            'yii\console\controllers\MigrateController',
+            MigrateController::class,
             [
                 'migrationPath' => ['@app/migrations', '@vendor/vench/yii2-parse-contacts/migrations']
             ]
@@ -43,4 +43,5 @@ class Module extends \yii\base\Module implements BootstrapInterface
         var_dump(__METHOD__);
     }
 }
+
 

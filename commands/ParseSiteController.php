@@ -17,7 +17,7 @@ use yii\console\Controller;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class ParseController extends Controller
+class ParseSiteController extends Controller
 {
     /**
      * This command echoes what you have entered as the message.

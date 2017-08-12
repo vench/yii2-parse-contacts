@@ -16,7 +16,8 @@
 		"homepage": "http://www.spb.vench-master.ru/"
 		}
 	],
-	"require": { 
+	"require": {
+		"yiisoft/yii2": "~2.0.4"
 	}	,
 	"autoload": {
 		"psr-4": {

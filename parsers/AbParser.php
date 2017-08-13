@@ -48,6 +48,7 @@ abstract class AbParser
                 $newItem = new PCSiteAddress();
                 $newItem->address = $adr;
                 $newItem->site_id = $model->id;
+                $newItem->sessia = 1;
                 $newItem->save();
             }
         }
@@ -67,6 +68,7 @@ abstract class AbParser
                 $newItem = new PCSitePhone();
                 $newItem->phone = $tel;
                 $newItem->site_id = $model->id;
+                $newItem->sessia = 1;
                 $newItem->save();
             }
         }
@@ -88,6 +90,7 @@ abstract class AbParser
                 $newItem = new PCSiteEmail();
                 $newItem->email = $email;
                 $newItem->site_id = $model->id;
+                $newItem->sessia = 1;
                 $newItem->save();
             }
         }

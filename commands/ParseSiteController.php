@@ -7,6 +7,7 @@
 
 namespace Vench\ParseContacts\Commands;
 
+use Vench\ParseContacts\Models\PCSite;
 use yii\console\Controller;
 
 /**
@@ -41,12 +42,42 @@ class ParseSiteController extends Controller
      */
     protected function parse($site) {
         $this->stdout("Start parse site: " . $site . PHP_EOL);
-        if(($val = filter_var($site, FILTER_VALIDATE_URL)) === false) {
 
+        $url = $this->normallyUrl($site);
+
+        if(($val = filter_var($url, FILTER_VALIDATE_URL)) === false) {
+
+            $this->stderr("Invalid value: ". $url . PHP_EOL);
+            return;
         }
 
-        var_dump($val);
+        $model = PCSite::find()->where('site=:site', $url);
+        if(is_null($model)) {
+            $model = new PCSite();
+            $model->site = $url;
+            $model->title = $site;
+            $model->save();
+        }
+
+        echo $model->id, PHP_EOL;
+
+
         $this->stdout("End parse site: " . $site . PHP_EOL);
+    }
+
+    /**
+     * @param string $url
+     * @return string
+     */
+    protected function normallyUrl($url) {
+        if ( $parts = parse_url($url) ) {
+            if ( !isset($parts["scheme"]) )  {
+                return 'http://' . $parts['path'];
+            }
+
+            return $parts['scheme'] . '://' . $parts['host'];
+        }
+        return $url;
     }
 }
 

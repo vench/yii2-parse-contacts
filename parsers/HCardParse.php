@@ -25,12 +25,19 @@ class HCardParse extends AbParser
     public function parse(PCSite $model)
     {
         $mf = Mf2\fetch($model->site);
-
-        foreach ($mf['items'] as $microformat) {
-            echo "A {$microformat['type'][0]} called {$microformat['properties']['name'][0]}\n";
+        if(isset($mf['items'])) {
+            foreach ($mf['items'] as $item) {
+                if(isset($item['h-card'][0]) && $item['h-card'][0] === 'h-card') {
+                    return $this->fetchData($item['properties'], $model);
+                }
+            }
         }
 
+        return false;
+    }
 
+    private function fetchData($properties, PCSite $model) {
+        print_r($properties);
         return false;
     }
 }

@@ -146,7 +146,7 @@ class hKit
 
             for ($i=0; $i<sizeof($classes); $i++){
 
-                if (!is_array($classes[$i])){
+                if (isset($classes[$i]) && !is_array($classes[$i])){
 
                     $xpath          = ".//*[contains(concat(' ',normalize-space(@class),' '),' " .
                         $classes[$i] . " ')]";
@@ -255,7 +255,9 @@ class hKit
         if (array_key_exists($className, $this->att_map)){
             foreach ($this->att_map[$className] as $map){
                 if (preg_match("/$tag_name\|/", $map)){
-                    $s = ''.$node[array_pop($foo = explode('|', $map))];
+                    $foo = explode('|', $map);
+                    $pop = count($foo) ? array_pop($foo) : -1;
+                    $s = ''.( isset($node[$pop]) ? $node[$pop] : '');
                 }
             }
         }
@@ -368,7 +370,7 @@ class hKit
     {
         $required    = $this->required;
 
-        if (is_array($s) && array_key_exists($required[0], $s)){
+        if (isset($required[0]) && is_array($s) && array_key_exists($required[0], $s)){
             $s    = array($s);
         }
 
@@ -438,11 +440,16 @@ class hKit
         $singles    = $this->singles;
 
         foreach ($s as &$item){
-            foreach ($singles as $classname){
-                if (array_key_exists($classname, $item) && is_array($item[$classname])){
-                    if (isset($item[$classname][0])) $item[$classname]    = $item[$classname][0];
+
+            if(count($singles)) {
+
+                foreach ($singles as $classname) {
+                    if (array_key_exists($classname, $item) && is_array($item[$classname])) {
+                        if (isset($item[$classname][0])) $item[$classname] = $item[$classname][0];
+                    }
                 }
             }
+
         }
 
         return $s;

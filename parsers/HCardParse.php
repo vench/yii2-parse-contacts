@@ -10,7 +10,10 @@ namespace Vench\ParseContacts\Parsers;
 
 
 use Vench\ParseContacts\Models\PCSite;
-use Vench\ParseContacts\Ext\hKit;
+use Mf2;
+
+
+
 
 class HCardParse extends AbParser
 {
@@ -21,10 +24,13 @@ class HCardParse extends AbParser
      */
     public function parse(PCSite $model)
     {
-        $hKit = new hKit();
-        $result = $hKit->getByURL('hcard', $model->site);
+        $mf = Mf2\fetch($model->site);
 
-        var_dump($result);
+        foreach ($mf['items'] as $microformat) {
+            echo "A {$microformat['type'][0]} called {$microformat['properties']['name'][0]}\n";
+        }
+
+
         return false;
     }
 }

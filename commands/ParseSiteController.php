@@ -39,6 +39,25 @@ class ParseSiteController extends Controller
     }
 
     /**
+     *
+     */
+    public function actionTree() {
+        $sites = PCSite::find()->with([
+            'pcSiteEmails',
+            'pcSitePhones',
+            'pcSiteAddresses',
+        ])->all();
+
+        foreach ($sites as $site) {
+            echo "===", $site->site, PHP_EOL;
+            foreach ($site->pcSiteEmails as $email) {
+                echo "\t===", $email->email, PHP_EOL;
+            }
+        }
+    }
+
+
+    /**
      * @param $site
      */
     protected function parse($site) {
@@ -54,7 +73,6 @@ class ParseSiteController extends Controller
 
         $model = PCSite::findBySiteOrCreate($url, $site);
 
-        //echo $model->id, PHP_EOL;
         foreach(AbParser::getListParsers() as $parser) {
             if($parser->parse($model)) {
                 break;

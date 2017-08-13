@@ -10,6 +10,9 @@ namespace Vench\ParseContacts\Parsers;
 
 
 use Vench\ParseContacts\Models\PCSite;
+use Vench\ParseContacts\Models\PCSiteAddress;
+use Vench\ParseContacts\Models\PCSiteEmail;
+use Vench\ParseContacts\Models\PCSitePhone;
 use Mf2;
 
 
@@ -64,9 +67,5 @@ class HCardParse extends AbParser
         return true;
     }
 
-    protected function addAddrs(PCSite $model, $adrs) {}
 
-    protected function addTels(PCSite $model, $tels) {}
-
-    protected function addEmails(PCSite $model, $emails) {}
 }

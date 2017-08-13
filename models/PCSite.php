@@ -73,7 +73,7 @@ class PCSite extends \yii\db\ActiveRecord
      */
     public function getPcSiteAddresses()
     {
-        return $this->hasMany(PcSiteAddress::className(), ['site_id' => 'id']);
+        return $this->hasMany(PCSiteAddress::className(), ['site_id' => 'id']);
     }
 
     /**
@@ -81,7 +81,7 @@ class PCSite extends \yii\db\ActiveRecord
      */
     public function getPcSiteEmails()
     {
-        return $this->hasMany(PcSiteEmail::className(), ['site_id' => 'id']);
+        return $this->hasMany(PCSiteEmail::className(), ['site_id' => 'id']);
     }
 
     /**
@@ -89,7 +89,7 @@ class PCSite extends \yii\db\ActiveRecord
      */
     public function getPcSitePhones()
     {
-        return $this->hasMany(PcSitePhone::className(), ['site_id' => 'id']);
+        return $this->hasMany(PCSitePhone::className(), ['site_id' => 'id']);
     }
 }
 

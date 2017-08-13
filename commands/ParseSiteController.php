@@ -40,9 +40,13 @@ class ParseSiteController extends Controller
      * @param $site
      */
     protected function parse($site) {
-        $this->stdout("Start parse site: " . $site);
+        $this->stdout("Start parse site: " . $site . PHP_EOL);
+        if(($val = filter_var($site, FILTER_VALIDATE_URL)) === false) {
 
-        $this->stdout("End parse site: " . $site);
+        }
+
+        var_dump($val);
+        $this->stdout("End parse site: " . $site . PHP_EOL);
     }
 }
 

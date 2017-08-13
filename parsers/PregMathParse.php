@@ -74,20 +74,5 @@ class PregMathParse extends AbParser
         return false;
     }
 
-    /**
-     * @param $url
-     * @return bool|string
-     */
-    private function getContent($url) {
-        $opts = [
-            "http" => [
-                "method" => "GET",
-                "header" => "Accept-language: en\r\n"
-            ]
-        ];
 
-        $context = stream_context_create($opts);
-
-        return file_get_contents($url, false, $context);
-    }
 }

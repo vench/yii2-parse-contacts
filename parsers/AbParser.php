@@ -95,4 +95,21 @@ abstract class AbParser
             }
         }
     }
+
+    /**
+     * @param $url
+     * @return bool|string
+     */
+    protected function getContent($url) {
+        $opts = [
+            "http" => [
+                "method" => "GET",
+                "header" => "Accept-language: en\r\n"
+            ]
+        ];
+
+        $context = stream_context_create($opts);
+
+        return file_get_contents($url, false, $context);
+    }
 }

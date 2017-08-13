@@ -10,3 +10,6 @@ Parse contacts
     ]
 
         'bootstrap' =>  ['vp'],
+        
+        
+        params => ['yandex']['apikey'] 

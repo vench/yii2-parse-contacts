@@ -39,7 +39,7 @@ class Module extends \yii\base\Module implements BootstrapInterface
 
             $app->controllerMap[$this->id] = [
                 'class' => 'Vench\ParseContacts\Commands\ParseSiteController',
-                'module' => $this,
+                //'module' => $this,
             ];
         }
     }
@@ -51,7 +51,6 @@ class Module extends \yii\base\Module implements BootstrapInterface
     {
         parent::init();
 
-        var_dump(__METHOD__);
     }
 }
 

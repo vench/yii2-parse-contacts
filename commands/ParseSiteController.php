@@ -20,12 +20,12 @@ use yii\console\Controller;
 class ParseSiteController extends Controller
 {
     /**
-     * This command echoes what you have entered as the message.
-     * @param string $message the message to be echoed.
+     * @param array $sites
      */
-    public function actionIndex($message = 'hello world')
+    public function actionIndex($sites = [])
     {
-        echo $message . "\n";
+        var_dump($sites);
+        echo __METHOD__ . "\n";
     }
 }
 

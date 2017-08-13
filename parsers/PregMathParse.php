@@ -21,12 +21,56 @@ class PregMathParse extends AbParser
     public function parse(PCSite $model)
     {
         $content = $this->getContent($model->site);
-        $dom = new DOMDocument;
-        $dom->loadHTML($content);
-        foreach ($dom->getElementsByTagName('a') as $node) {
-            echo $dom->saveHtml($node), PHP_EOL;
+        $regexp = "<a\s[^>]*href=(\"??)([^\" >]*?)\\1[^>]*>(.*)<\/a>";
+        if(preg_match_all("/$regexp/siU", $content, $matches, PREG_SET_ORDER)) {
+            foreach($matches as $match) {
+                $url = $match[2];
+                if(strpos($url, 'http') === false) {//local path
+                    $url = $model->site . $url;
+
+                    $content = $this->getContent($url);
+                    if( $this->parseAddress($model, $content) &&
+                        $this->parseEmail($model, $content) &&
+                        $this->parsePhone($model, $content)) {
+                        return true;
+                    }
+
+                }
+            }
         }
 
+        return false;
+    }
+
+
+    /**
+     * @param PCSite $model
+     * @param string $content
+     * @return bool
+     */
+    private function parseEmail(PCSite $model, $content) {
+        $regexp = '/[A-Za-z\d._%+-]+@[A-Za-z\d.-]+\.[A-Za-z]{2,4}\b/siU';
+        if(preg_match_all("/$regexp/siU", $content, $matches, PREG_SET_ORDER)) {
+            print_r($matches);
+        }
+        return false;
+    }
+
+    /**
+     * @param PCSite $model
+     * @param string $content
+     * @return bool
+     */
+    private function parsePhone(PCSite $model, $content) {
+        return false;
+    }
+
+    /**
+     * @param PCSite $model
+     * @param string $content
+     * @return bool
+     */
+    private function parseAddress(PCSite $model, $content) {
         return false;
     }
 

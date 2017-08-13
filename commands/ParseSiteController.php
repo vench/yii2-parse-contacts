@@ -20,12 +20,29 @@ use yii\console\Controller;
 class ParseSiteController extends Controller
 {
     /**
-     * @param array $sites
+     * @var string
      */
-    public function actionIndex($sites = [])
+    public $delimiter = ',';
+
+    /**
+     * @param string $sites List sites
+     */
+    public function actionIndex($sites)
     {
-        var_dump($sites);
-        echo __METHOD__ . "\n";
+        $list = explode($this->delimiter, $sites);
+
+        foreach ($list as $site) {
+            $this->parse($site);
+        }
+    }
+
+    /**
+     * @param $site
+     */
+    protected function parse($site) {
+        $this->stdout("Start parse site: " . $site);
+
+        $this->stdout("End parse site: " . $site);
     }
 }
 

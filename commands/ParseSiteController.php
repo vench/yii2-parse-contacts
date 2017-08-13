@@ -49,9 +49,15 @@ class ParseSiteController extends Controller
         ])->all();
 
         foreach ($sites as $site) {
-            echo "===", $site->site, PHP_EOL;
+            echo "--- ", $site->site, PHP_EOL;
             foreach ($site->pcSiteEmails as $email) {
-                echo "\t===", $email->email, PHP_EOL;
+                echo "\t ---", $email->email, PHP_EOL;
+            }
+            foreach ($site->pcSitePhones as $phone) {
+                echo "\t ---", $phone->phone, PHP_EOL;
+            }
+            foreach ($site->pcSiteAddresses as $addres) {
+                echo "\t ---", substr($addres->address, 0, 255, PHP_EOL;
             }
         }
     }

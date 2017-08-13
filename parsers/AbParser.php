@@ -3,6 +3,9 @@
 namespace Vench\ParseContacts\Parsers;
 
 use Vench\ParseContacts\Models\PCSite;
+use Vench\ParseContacts\Models\PCSiteEmail;
+use Vench\ParseContacts\Models\PCSitePhone;
+use Vench\ParseContacts\Models\PCSiteAddress;
 
 /**
  * Created by PhpStorm.

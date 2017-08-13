@@ -22,7 +22,7 @@
 	"autoload": {
 		"psr-4": {
 			"Vench\\ParseContacts\\": "/",
-			"Vench\\ParseContacts\\Commands\\": "/commands/"
+			"Vench\\ParseContacts\\Commands\\": "/commands/",
 			"Vench\\ParseContacts\\Models\\": "/models/"
 		}
 	},

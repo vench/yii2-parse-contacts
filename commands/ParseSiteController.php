@@ -57,7 +57,7 @@ class ParseSiteController extends Controller
                 echo "\t ---", $phone->phone, PHP_EOL;
             }
             foreach ($site->pcSiteAddresses as $addres) {
-                echo "\t ---", substr($addres->address, 0, 255, PHP_EOL;
+                echo "\t ---", substr($addres->address, 0, 255), PHP_EOL;
             }
         }
     }

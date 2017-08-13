@@ -22,7 +22,7 @@ class HCardParse extends AbParser
     public function parse(PCSite $model)
     {
         $hKit = new hKit();
-        $result = $hKit->getByURL($model->site);
+        $result = $hKit->getByURL('hcard', $model->site);
 
         var_dump($result);
         return false;

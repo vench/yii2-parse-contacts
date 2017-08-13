@@ -8,6 +8,7 @@
 namespace Vench\ParseContacts\Commands;
 
 use Vench\ParseContacts\Models\PCSite;
+use Vench\ParseContacts\Parsers\AbParser;
 use yii\console\Controller;
 
 /**
@@ -51,15 +52,14 @@ class ParseSiteController extends Controller
             return;
         }
 
-        $model = PCSite::find()->where('site=:site', $url);
-        if(is_null($model)) {
-            $model = new PCSite();
-            $model->site = $url;
-            $model->title = $site;
-            $model->save();
-        }
+        $model = PCSite::findBySiteOrCreate($url, $site);
 
-        echo $model->id, PHP_EOL;
+        //echo $model->id, PHP_EOL;
+        foreach(AbParser::getListParsers() as $parser) {
+            if($parser->parse($model)) {
+                break;
+            }
+        }
 
 
         $this->stdout("End parse site: " . $site . PHP_EOL);

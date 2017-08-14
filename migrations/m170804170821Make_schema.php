@@ -11,7 +11,7 @@ class m170804170821Make_schema extends Migration
             'id'             => $this->primaryKey()->unsigned(),
             'title'          => $this->string()->null(),
             'site'           => $this->string()->notNull(), 
-        ]);
+        ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
         
         $this->createTable('{{pc_site_phone}}', [
             'id'             => $this->primaryKey()->unsigned(),
@@ -19,7 +19,7 @@ class m170804170821Make_schema extends Migration
             'sessia'         => $this->integer()->unsigned()->notNull(),
             'unixtimestamp'  => $this->timestamp(),
             'phone'          => $this->string()->notNull(), 
-        ]);
+        ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
         
         $this->createTable('{{pc_site_email}}', [
             'id'             => $this->primaryKey()->unsigned(),
@@ -27,15 +27,15 @@ class m170804170821Make_schema extends Migration
             'sessia'         => $this->integer()->unsigned()->notNull(),
             'unixtimestamp'  => $this->timestamp(),
             'email'          => $this->string()->notNull(), 
-        ]);
+        ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
         
         $this->createTable('{{pc_site_address}}', [
             'id'             => $this->primaryKey()->unsigned(),
             'site_id'        => $this->integer()->unsigned()->notNull(),
             'sessia'         => $this->integer()->unsigned()->notNull(),
             'unixtimestamp'  => $this->timestamp(),
-            'address'        => $this->string()->notNull(), 
-        ]);
+            'address'        => $this->string(1024)->notNull(),
+        ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
         
         
         $this->addForeignKey('FK_pc_site_phone_site_id', 

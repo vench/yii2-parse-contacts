@@ -34,7 +34,7 @@ class PCSiteAddress extends \yii\db\ActiveRecord
             [['site_id', 'sessia', 'address'], 'required'],
             [['site_id', 'sessia'], 'integer'],
             [['unixtimestamp'], 'safe'],
-            [['address'], 'string', 'max' => 255],
+            [['address'], 'string', 'max' => 1024],
             [['site_id'], 'exist', 'skipOnError' => true, 'targetClass' => PcSite::className(), 'targetAttribute' => ['site_id' => 'id']],
         ];
     }

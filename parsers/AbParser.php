@@ -97,19 +97,28 @@ abstract class AbParser
     }
 
     /**
-     * @param $url
+     * @param string $url
      * @return bool|string
      */
     protected function getContent($url) {
         $opts = [
             "http" => [
                 "method" => "GET",
-                "header" => "Accept-language: en\r\n"
+                "header" => "Accept-language: en\r\n" .
+                    "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.109 Safari/537.36\r\n"
             ]
         ];
 
         $context = stream_context_create($opts);
 
         return file_get_contents($url, false, $context);
+    }
+
+    /**
+     * @param string $phone
+     * @return string
+     */
+    protected function normallyPhone($phone) {
+        return preg_replace('/[^0-9\+]/', '', $phone);
     }
 }

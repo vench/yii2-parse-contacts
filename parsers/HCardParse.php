@@ -39,6 +39,11 @@ class HCardParse extends AbParser
         return false;
     }
 
+    /**
+     * @param $properties
+     * @param PCSite $model
+     * @return bool
+     */
     private function fetchData($properties, PCSite $model) {
 
 

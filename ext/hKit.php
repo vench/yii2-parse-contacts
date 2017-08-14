@@ -58,7 +58,11 @@ Version 0.1, 20-Jun-2006
 
 
 */
-
+/**
+ * Class hKit
+ * @package Vench\ParseContacts\Ext
+ * @deprecated
+ */
 class hKit
 {
 

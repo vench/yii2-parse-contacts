@@ -51,7 +51,7 @@ abstract class AbParser
                 $newItem->sessia = 1;
                 $newItem->save();
 
-                $model->pcSiteAddresses[] = $newItem;
+                $model->refresh();
             }
         }
     }
@@ -73,7 +73,7 @@ abstract class AbParser
                 $newItem->sessia = 1;
                 $newItem->save();
 
-                $model->pcSitePhones[] = $newItem;
+                $model->refresh();
             }
         }
     }
@@ -97,7 +97,7 @@ abstract class AbParser
                 $newItem->sessia = 1;
                 $newItem->save();
 
-                $model->pcSiteEmails[] = $newItem;
+                $model->refresh();
             }
         }
     }

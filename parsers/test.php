@@ -87,7 +87,7 @@ function normallyPhone($phone) {
 
 function parseAddress($content) {
     $names = [
-        'г\.', 'ул\.', 'д\.', 'оф\.'
+        'г\.', 'Станция метро:', 'пр\.', 'бульвар', 'ул\.', 'д\.', 'к\.', 'оф\.', 'БЦ'
     ];
     $regexps = [
         '('.join('|', $names).')\s{1,2}.+(\,|\s{2})'
@@ -144,5 +144,5 @@ function parse($site)
 
 
 
-$url = 'http://www.okna98.ru/contacts/';// 'https://pv-okna.ru/kontakty/';
+$url = 'http://www.okna98.ru/contacts/';
 parse($url);

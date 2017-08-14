@@ -76,7 +76,7 @@ class PregMathParse extends AbParser
      */
     private function parseAddress($content) {
         $names = [
-            'г\.', 'ул\.', 'д\.', 'оф\.'
+            'г\.', 'Станция метро:', 'пр\.', 'бульвар', 'ул\.', 'д\.', 'к\.', 'оф\.', 'БЦ'
         ];
         $regexps = [
             '('.join('|', $names).')\s{1,2}.+(\,|\s{2})'
